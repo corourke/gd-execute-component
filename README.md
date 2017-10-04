@@ -1,11 +1,11 @@
-You must start the app with:
+This is a trivial create-react-app to test the GD Execute component.
 
-HTTPS=true yarn start
+I'm still trying to understand how it should be used in a React application.
 
-Or the proxy will not work properly.
+___
 
-Then navigate to:
+After starting the app, you must first navigate to:
 
-https://localhost:3000/account.html
+```https://localhost:3000/account.html```
 
-To log into the workspace.
+To log into the GoodData workspace.
