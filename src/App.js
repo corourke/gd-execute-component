@@ -3,6 +3,22 @@ import logo from './logo.svg';
 import './App.css';
 import { Execute } from '@gooddata/react-components';
 
+// A component to render the single metric
+const Metric = ({content}) => {
+  console.log(content);
+  return (
+    <div>{`Metric: ${content.result.rawData[0]}`}</div>
+  )
+}
+
+// An error component -- never seems to be called
+const Error = ({err}) => {
+  console.log(`ERROR: ${err}`);
+  return (
+  <div style="color: red;">{`ERROR: ${err}`}</div>
+)}
+
+// The main aplication component
 class App extends Component {
 
   constructor(props) {
@@ -33,28 +49,23 @@ class App extends Component {
         </header>
 
         <div>
-          <Execute afm={this.state.afm} projectId={this.state.workspace}
-                   onLoadingChanged={handleLoadingChanged}
-                   onError={(err) => <div>err</div>} >
-            {
-              (executionResult) => {
-                <div>blah</div> //JSON.stringify(executionResult)
-              }
-            }
-          </Execute>
+            <Execute afm={this.state.afm} projectId={this.state.workspace}
+                     onLoadingChanged={handleLoadingChanged}
+                     onError={(err) => <Error>{err}</Error>} >
+                     {(result) =>
+                       <Metric content={result}></Metric>
+                     }
+            </Execute>
         </div>
 
       </div>
     );
 
+    // I'm not really sure how this callback is supposed to be used
     function handleLoadingChanged(result) {
-      <div>loading change</div>
+      console.log("loading change", result)
     }
   }
 }
 
 export default App;
-
-
-
-
