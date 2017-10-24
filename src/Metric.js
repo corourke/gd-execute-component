@@ -9,14 +9,14 @@ class Metric extends Component {
 
   render() {
     console.log("Render: ", this.props);
-    if(this.props.data.error !== null) {
+    if(this.props.error) {
       return (
         <div className="metric metric--state-error">
-          <div className="metric-value">{this.props.data.error}</div>
+          <div className="metric-value">{this.props.error}</div>
           <div className="metric-label">Error</div>
         </div>
       )
-    } else if (this.props.data.isLoading === true) {
+    } else if (this.props.isLoading === true) {
         return (
           <div className="metric metric--state-loading">
             <div className="metric-label">Loading...</div>

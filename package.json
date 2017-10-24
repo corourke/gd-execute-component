@@ -5,6 +5,7 @@
   "dependencies": {
     "@gooddata/data-layer": "^3.3.0",
     "@gooddata/react-components": "^2.5.2",
+    "numeral": "^2.0.6",
     "prop-types": "^15.6.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",
@@ -24,6 +25,7 @@
     },
     "/*.html": {
       "changeOrigin": true,
+      "secure": false,
       "target": "https://secure.gooddata.com/"
     }
   },
