@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import numeral from 'numeral'
 import logo from './logo.svg';
 import './App.css';
 import Metric from './Metric';
@@ -59,9 +60,12 @@ class App extends Component {
 
     function prepare(result) {
       console.log(result)
+      const value = result.result.rawData[0][0]
+      const format = result.result.headers[0].format
       return ({
         name: result.result.headers[0].title,
-        value: result.result.rawData[0][0]
+        value,
+        formatted: numeral(value).format(format)
       })
     }
   }

@@ -26,7 +26,7 @@ class Metric extends Component {
         return (
           <div className="metric">
             <div className="metric-label">{`${this.props.data.name}`}</div>
-            <div className="metric-value">{this.props.data.value}
+            <div className="metric-value">{this.props.data.formatted}
             </div>
           </div>
         )
