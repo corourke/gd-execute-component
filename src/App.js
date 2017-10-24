@@ -24,12 +24,13 @@ class App extends Component {
           }
         ]
       },
+      // TODO: So what do we really do about localization?
       transformation: {
         measures: [
           {
             id: 'single-measure',
-            title: props.title,
-            format: "#,##0.00"
+            title: props.title, // TODO: Needs to handle case of multiple Metrics on a page.
+            format: "$#,##0"
           }
         ]
       }

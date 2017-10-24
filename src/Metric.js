@@ -9,6 +9,7 @@ class Metric extends Component {
 
   render() {
     console.log("Render: ", this.props);
+    // TODO: This code should be made more elegant with smarter CSS
     if(this.props.error) {
       return (
         <div className="metric metric--state-error">
