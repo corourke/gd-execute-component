@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import './Metric.css'
 
 
-// A component to render the single metric
+// A stateless component to render a single metric
 
 class Metric extends Component {
 
   render() {
-    console.log("Render: ", this.props)
+    console.log("Render: ", this.props);
     if(this.props.data.error !== null) {
       return (
         <div className="metric metric--state-error">
@@ -41,5 +41,6 @@ Metric.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string
   })
-}
+};
+
 export default Metric

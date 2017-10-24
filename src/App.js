@@ -55,15 +55,12 @@ class App extends Component {
 
     function prepare(result) {
       console.log(result)
-      var data = {
+      return ({
         isLoading: false,
         error: null,
         name: "Unknown",
         value: result.result.rawData[0][0]
-      }
-      return (
-        data
-      )
+      })
     }
   }
 }
