@@ -1,0 +1,6 @@
+{
+  "hostname": "https://secure.gooddata.com",
+  "username": "demos@gooddata.com",
+  "projectId": "la84vcyhrq8jwbu4wpipw66q2sqeb923",
+  "output": "catalog.json"
+}

@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Metric from './Metric';
 import {Kpi, Execute} from '@gooddata/react-components';
+import C from './catalog.json';
 
 // The main application component
 class App extends Component {
@@ -15,21 +16,37 @@ class App extends Component {
       afm: {
         measures: [
           {
-            id: 'single-measure',
+            id: 'won',
             definition: {
               baseObject: {
-                id: 'aaeb7jTCfexV'
+                id: C.metrics['Won'].identifier
+              }
+            }
+          },
+          {
+            id: 'lost',
+            definition: {
+              baseObject: {
+                id: C.metrics['Lost'].identifier
               }
             }
           }
+        ],
+        attributes: [
+          { id: 'oppclose.aci81lMifn6q' }
         ]
       },
-      // TODO: So what do we really do about localization?
+      // TODO: How can we handle localization?
       transformation: {
         measures: [
           {
-            id: 'single-measure',
-            title: props.title, // TODO: Needs to handle case of multiple Metrics on a page.
+            id: 'won',
+            title: 'Won',
+            format: "$#,##0"
+          },
+          {
+            id: 'lost',
+            title: 'Lost',
             format: "$#,##0"
           }
         ]
@@ -52,7 +69,7 @@ class App extends Component {
         <div>
           <Execute projectId={this.state.workspace} afm={this.state.afm} transformation={this.state.transformation}
                    onLoadingChanged={(loading) => this.setState(loading)}
-                   onError={(err) => this.setState(err)} >
+                   onError={(err) => {console.log(err); this.setState(err)}} >
             {(result) => <Metric data={prepare(result)} loading={this.state.isLoading} error={this.state.error} /> }
           </Execute>
         </div>
@@ -61,10 +78,10 @@ class App extends Component {
 
     function prepare(result) {
       console.log(result)
-      const value = result.result.rawData[0][0]
-      const format = result.result.headers[0].format
+      const value = result.result.rawData[6][1]
+      const format = result.result.headers[1].format
       return ({
-        name: result.result.headers[0].title,
+        name: result.result.headers[1].title,
         value,
         formatted: numeral(value).format(format)
       })
